@@ -45,7 +45,7 @@ const TaskManager = () => {
     }
   };
 
-  const handleToggleComplete = async (id, completed) => {
+const handleToggleComplete = async (id, completed) => {
     try {
       const updatedTask = await taskService.update(id, { completed });
       setTasks(prev => prev.map(task => 
@@ -69,22 +69,22 @@ const TaskManager = () => {
     }
   };
 
-  const getFilteredTasks = () => {
+const getFilteredTasks = () => {
     switch (activeFilter) {
       case "active":
-        return tasks.filter(task => !task.completed);
+        return tasks.filter(task => !task.completed_c);
       case "completed":
-        return tasks.filter(task => task.completed);
+        return tasks.filter(task => task.completed_c);
       default:
         return tasks;
     }
   };
 
-  const getTaskCounts = () => {
+const getTaskCounts = () => {
     return {
       all: tasks.length,
-      active: tasks.filter(task => !task.completed).length,
-      completed: tasks.filter(task => task.completed).length
+      active: tasks.filter(task => !task.completed_c).length,
+      completed: tasks.filter(task => task.completed_c).length
     };
   };
 

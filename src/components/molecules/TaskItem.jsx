@@ -13,7 +13,7 @@ const TaskItem = ({ task, onToggleComplete, onDelete, className, ...props }) => 
     
     setIsUpdating(true);
     try {
-      await onToggleComplete(task.Id, !task.completed);
+await onToggleComplete(task.Id, !task.completed_c);
     } catch (error) {
       console.error("Error updating task:", error);
     } finally {
@@ -51,7 +51,7 @@ const TaskItem = ({ task, onToggleComplete, onDelete, className, ...props }) => 
       <label className="flex items-center cursor-pointer">
         <input
           type="checkbox"
-          checked={task.completed}
+checked={task.completed_c}
           onChange={handleToggleComplete}
           disabled={isUpdating}
           className="task-checkbox"
@@ -62,12 +62,12 @@ const TaskItem = ({ task, onToggleComplete, onDelete, className, ...props }) => 
         <p className={cn(
           "text-sm font-medium transition-all duration-200",
           task.completed ? "task-completed" : "text-primary"
-        )}>
-          {task.text}
+)}>
+          {task.text_c}
         </p>
-        {task.completedAt && (
+{task.completed_at_c && (
           <p className="text-xs text-secondary mt-1">
-            Completed {new Date(task.completedAt).toLocaleDateString()}
+            Completed {new Date(task.completed_at_c).toLocaleDateString()}
           </p>
         )}
       </div>
